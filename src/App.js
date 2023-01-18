@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>SoT Editor</h1>
+      <div style={{ marginBottom: "20px" }}>
+        <TextField id="outlined-basic" label="description" variant="outlined" />
+      </div>
+      <div style={{ marginBottom: "20px" }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Rarity</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={1}
+            label="Age"
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+      <div style={{ marginBottom: "20px" }}>
+        <Button variant="contained">Update</Button>
+      </div>
     </div>
   );
 }
