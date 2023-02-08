@@ -8,7 +8,12 @@ import {
 } from "@mui/material";
 import "./App.css";
 
+import sotData from "./sotData.js";
+import XMLParser from "react-xml-parser";
+
 function App() {
+  const sotJSON = new XMLParser().parseFromString(sotData);
+  console.log(sotJSON);
   return (
     <div className="App">
       <h1>SoT Editor</h1>
