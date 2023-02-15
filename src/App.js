@@ -24,32 +24,13 @@ function App() {
   const [card, setCard] = useState(cardInfo);
   const sotJSON = new XMLParser().parseFromString(sotData);
   function handleTypeChange(event){
-    const stat = event.target.name;
-    var newCard = {};
-    switch(stat){
-      case "Name": newCard = {...card,  Name:event.target.value}; break;
-      case "Description": newCard = {...card,  Description:event.target.value}; break;
-      case "Type": newCard = {...card,  Type:event.target.value}; break;
-      case "God": newCard = {...card,  God:event.target.value}; break;
-      case "Set": newCard = {...card,  Set:event.target.value}; break;
-      case "Tribe": newCard = {...card,  Tribe:event.target.value}; break;
-      case "Rarity": newCard = {...card,  Rarity:event.target.value}; break;
-      case "Mana": newCard = {...card,  Mana:event.target.value}; break;
-      case "Attack": newCard = {...card,  Attack:event.target.value}; break;
-      case "Health": newCard = {...card,  Health:event.target.value}; break;
-      case "GlobalID": newCard = {...card,  GlobalID:event.target.value}; break;
-      case "LibraryID": newCard = {...card,  LibraryID:event.target.value}; break;
-      case "ArtID": newCard = {...card,  ArtID:event.target.value}; break;
-      case "Live": newCard = {...card,  Live:event.target.value}; break;
-      case "Released": newCard = {...card,  Released:event.target.value}; break;
-      case "Packable": newCard = {...card,  Packable:event.target.value}; break;
-      case "Collectable": newCard = {...card,  Collectable:event.target.value}; break;
-    }
+    console.log("Handle Type");
+    const statName = event.target.name;
+    const newCard = {...card,  [statName]:event.target.value};
     setCard(newCard);
   }
-  function handleGodChange(event){
-    const newCard = {...card,  God:event.target.value};
-    setCard(newCard);
+  function handleCheckboxChange(event){
+    console.log(event);
   }
   return (
     <div className="App">
@@ -137,12 +118,12 @@ function App() {
             <TextField style={{ marginBottom: "20px", marginRight: "20px", width: statWidth }} id="outlined-basic" name="LibraryID" label="LibraryID" variant="outlined" value={card.LibraryID} onChange={handleTypeChange}/> 
             <TextField style={{ marginBottom: "20px", marginRight: "20px", width: statWidth }} id="outlined-basic" name="ArtID"  label="ArtID" variant="outlined" value={card.ArtID} onChange={handleTypeChange}/> 
           </div>
-          <FormGroup style={{ marginRight: "20px", marginLeft: "10px" }}>
-            <FormControlLabel control={<CheckBox id="outlined-basic" variant="outlined" value={card.Live}/>} name="Live" label="Live" onChange={handleTypeChange}/>
-            <FormControlLabel control={<CheckBox id="outlined-basic" variant="outlined" value={card.Released}/>} name="Released" label="Released" onChange={handleTypeChange}/>
-            <FormControlLabel control={<CheckBox id="outlined-basic" variant="outlined" value={card.Packable}/>} name="Packable" label="Packable" onChange={handleTypeChange}/>
-            <FormControlLabel control={<CheckBox id="outlined-basic" variant="outlined" value={card.Collectable}/>} name="Collectable" label="Collectable" onChange={handleTypeChange}/>
-          </FormGroup>
+          {/* <FormGroup style={{ marginRight: "20px", marginLeft: "10px" }}> */}
+            <CheckBox id="outlined-basic" checked={true} onChange={handleCheckboxChange}/>
+            {/* <FormControlLabel control={<CheckBox id="outlined-basic" variant="outlined" onChange={handleCheckboxChange}/>} name="Released" label="Released" />
+            <FormControlLabel control={<CheckBox id="outlined-basic" variant="outlined" onChange={handleCheckboxChange}/>} name="Packable" label="Packable" />
+            <FormControlLabel control={<CheckBox id="outlined-basic" variant="outlined" onChange={handleCheckboxChange}/>} name="Collectable" label="Collectable" />
+          </FormGroup> */}
         </FormControl>
       </div>
       <div style={{ marginBottom: "20px" }}>
